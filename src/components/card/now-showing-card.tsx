@@ -60,8 +60,8 @@ const NowShowingCard = ({ movie }: NowShowingCardProps) => {
         </div>
 
         <div className="flex flex-1 flex-col items-center gap-4">
-          <div className="flex flex-col gap-2 lg:px-10 xl:px-16">
-            <h3 className="text-white text-2xl font-extrabold ">Summary</h3>
+          <div className="flex flex-col gap-2 lg:px-10 xl:px-16 text-white">
+            <h3 className=" text-2xl font-extrabold ">Summary</h3>
             <p className="overflow-hidden line-clamp-2 text-justify">
               {movie.overview}
             </p>
