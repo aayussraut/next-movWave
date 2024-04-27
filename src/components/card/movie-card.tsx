@@ -1,4 +1,3 @@
-"use client";
 import {
   MdStarRate,
   MdOutlineRemoveRedEye,
@@ -11,19 +10,22 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 
 interface MovieCardProps {
+  url: string;
   movie: Movie;
 }
 
-const MovieCard = ({ movie }: MovieCardProps) => {
+const MovieCard = ({ url, movie }: MovieCardProps) => {
   return (
-    <div className="min-h-fit w-40 ms-5 rounded-lg shadow-lg group py-2">
-      <Link href={`/movie/${movie.id}`} className="flex flex-col gap-1">
+    <div className="min-h-fit w-40 ms-5  2xl:ms-2 rounded-lg shadow-lg group py-2 ">
+      <Link href={`${url}/${movie.id}`} className="flex flex-col gap-1">
         <div className="relative xl:w-40 xl:h-60 2xl:w-56 2xl:h-80">
           <Image
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            alt={movie.title}
-            className="  rounded-2xl group-hover:scale-105 group-hover:blur-[2px] shadow-slate-600 shadow-sm object-fill  "
-            layout="fill"
+            alt={movie.name || movie.title || "Movie Poster"}
+            className="  rounded-2xl group-hover:scale-105 group-hover:blur-[2px] shadow-slate-600 shadow-sm object-fill  text-white"
+            fill={true}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={true}
           />
           <div className="z-10 bg-yellow-200/15 px-2 rounded-xl h-fit py-1 absolute  top-[42%] start-[33%] opacity-0 group-hover:opacity-100 ">
             <MdOutlineRemoveRedEye size={45} color={"white"} />
@@ -47,7 +49,9 @@ const MovieCard = ({ movie }: MovieCardProps) => {
         </div>
 
         <div className="flex gap-4 text-white">
-          <p className="text-xs ">{movie.release_date}</p>
+          <p className="text-xs ">
+            {movie.release_date ? movie.release_date : movie.first_air_date}
+          </p>
           <p className="text-xs line-clamp-1"> Action </p>
         </div>
       </Link>
