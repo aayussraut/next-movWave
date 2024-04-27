@@ -19,10 +19,10 @@ const Navbar = () => {
             <Link href="/"> Home</Link>
           </li>
           <li className="text-sm font-bold hover:text-[#2f80ed] hover:cursor-pointer">
-            <Link href="/movie"> Movies</Link>
+            <Link href="/movies"> Movies</Link>
           </li>
           <li className="text-sm font-bold hover:text-[#2f80ed] hover:cursor-pointer">
-            TV Shows
+            <Link href="/tv-shows"> TV Shows</Link>
           </li>
         </ul>
 
@@ -35,6 +35,8 @@ const Navbar = () => {
               className="w-8 h-8 rounded-full object-cover me-2 border-2 border-white"
               height={32}
               width={32}
+            priority={true}
+
             />
           </div>
         </div>
