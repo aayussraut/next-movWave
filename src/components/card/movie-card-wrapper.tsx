@@ -1,5 +1,3 @@
-"use client";
-
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Slider from "react-slick";
 interface MovieCardWrapperProps {
