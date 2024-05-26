@@ -18,7 +18,7 @@ const NowShowingCard = ({ movie }: NowShowingCardProps) => {
         backgroundImage: `url('https://image.tmdb.org/t/p/original${movie.backdrop_path}')`,
       }}
     >
-      <div className="flex items-center justify-center gap-10 px-10  h-[30rem]  bg-gradient-to-b from-transparent  to-black ">
+      <div className="flex items-center justify-center gap-10 px-10  h-[30rem]  bg-gradient-to-b from-transparent from-0% to-black to-100%">
         <div className="flex flex-1 flex-col gap-3 w-full my-auto z-10 items-center">
           <div>
             <Image

@@ -18,7 +18,7 @@ const MovieCard = ({ url, movie }: MovieCardProps) => {
   return (
     <div className="min-h-fit w-40 ms-5  2xl:ms-2 rounded-lg shadow-lg group py-2 ">
       <Link href={`${url}/${movie.id}`} className="flex flex-col gap-1">
-        <div className="relative xl:w-40 xl:h-60 2xl:w-56 2xl:h-80">
+        <div className="relative xl:w-40 xl:h-60 2xl:w-56 2xl:h-80 overflow-hidden rounded-2xl">
           <Image
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             alt={movie.name || movie.title || "Movie Poster"}
