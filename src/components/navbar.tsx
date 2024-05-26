@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav className=" hover:bg-white/15 hover:shadow-xl text-white  flex justify-center w-full  shadow-sm fixed top-0 z-50 drop-shadow-lg">
+    <nav className=" hover:bg-white/15 hover:shadow-sm text-white  flex justify-center w-full fixed top-0 z-50">
       <div className="flex justify-between text-white text-xs w-full px-10 py-2">
         <Link href="/">
           <div className="text-3xl">
