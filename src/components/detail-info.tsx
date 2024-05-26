@@ -45,7 +45,7 @@ export default function DetailInfo({
       <div className=" relative ">
         <div className=" flex flex-col w-full gap-5 z-10 absolute  -top-32 px-10">
           <div className="flex items-center gap-5 ">
-            <div className="relative w-44 min-h-60 ">
+            <div className="relative w-44 min-h-60 2xl:min-h-72 2xl:w-52">
               <Image
                 src={`http://image.tmdb.org/t/p/w185/${
                   movie?.poster_path || tv?.poster_path
@@ -87,7 +87,7 @@ export default function DetailInfo({
               <div className="flex gap-2 text-md text-[#2f80ed] items-center">
                 <div className="flex gap-1 items-center justify-center text-[#2f80ed] ">
                   <MdOutlineStarBorder size={20} className="pb-1" />
-                  <p className="text-white text-sm font-semibold ">
+                  <p className="text-white  font-semibold ">
                     {movie?.vote_average.toFixed(1) ||
                       tv?.vote_average.toFixed(1)}
                   </p>
@@ -102,7 +102,7 @@ export default function DetailInfo({
                 <p className="text-white">
                   {isMovie
                     ? Math.floor(movie!.runtime / 60) +
-                      " h" +
+                      " h " +
                       (movie!.runtime % 60) +
                       " min"
                     : tv!.seasons.length + " seasons"}
@@ -141,7 +141,7 @@ export default function DetailInfo({
                 <h2 className="text-white text-xl 2xl:text-3xl font-semibold mb-2">
                   Related
                 </h2>
-                <div className="flex flex-wrap gap-8">
+                <div className="flex flex-wrap gap-8 2xl:gap-x-24">
                   {similarMovies.length > 0 &&
                     similarMovies
                       .slice(0, 4)
