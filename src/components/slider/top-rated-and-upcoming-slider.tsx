@@ -37,7 +37,7 @@ const TopRatedAndUpcomingMovieSlider = ({
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 6,
+    slidesToShow: 7,
     slidesToScroll: 6,
     centerPadding: "60px",
     arrows: false,
@@ -47,7 +47,7 @@ const TopRatedAndUpcomingMovieSlider = ({
     <MovieCardWrapper title={title} sliderRef={slider}>
       <Slider ref={slider} {...settings}>
         {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
+          <MovieCard key={movie.id} url="/movies" movie={movie} />
         ))}
       </Slider>
     </MovieCardWrapper>

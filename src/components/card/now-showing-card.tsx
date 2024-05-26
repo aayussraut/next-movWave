@@ -27,6 +27,7 @@ const NowShowingCard = ({ movie }: NowShowingCardProps) => {
               className=" object-cover rounded-md transition-transform duration-300 transform scale-100 hover:scale-105"
               height={150}
               width={154}
+              priority={true}
             />
           </div>
           <div className="flex  gap-2">
@@ -41,7 +42,7 @@ const NowShowingCard = ({ movie }: NowShowingCardProps) => {
             </div>
           </div>
 
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center text-white">
             <p className=" text-xs font-semibold">{movie.release_date}</p>
             <span className="text-sm">|</span>
             <p className=" text-xs font-semibold">Ongoing</p>
@@ -65,7 +66,7 @@ const NowShowingCard = ({ movie }: NowShowingCardProps) => {
             <p className="overflow-hidden line-clamp-2 text-justify">
               {movie.overview}
             </p>
-            <Link href={`/movie/${movie.id}`}>
+            <Link href={`/movies/${movie.id}`}>
               <p className="text-sky-500 opacity-0 group-hover:opacity-100">
                 Read More --&gt;
               </p>
@@ -74,15 +75,15 @@ const NowShowingCard = ({ movie }: NowShowingCardProps) => {
 
           <div className="flex gap-2">
             <Button
-              className="flex   px-4 py-2 rounded-md items-center gap-2"
+              className="flex   px-4 py-2 rounded-md justify-center items-center gap-2 hover:text-black"
               variant={"default"}
             >
-              <IoPlaySharp size={20} fill="white" />
-              <span className="text-white font-semibold">Watch Trailer</span>
+              <IoPlaySharp size={20} />
+              <span className=" font-semibold">Watch Trailer</span>
             </Button>
             <Button
-              variant={"ghost"}
-              className="flex px-4 py-2 rounded-md items-center gap-2 bg-[#131720]  text-white hover:bg-gray-800 "
+              variant={"secondary"}
+              className="flex px-4 py-2 rounded-md items-center gap-2 bg-[#131720]   hover:bg-gray-800 "
             >
               <IoTicketSharp
                 size={20}
