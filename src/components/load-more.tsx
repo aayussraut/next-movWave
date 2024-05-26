@@ -11,23 +11,83 @@ let page: number = 1;
 export type MovieCard = JSX.Element;
 
 interface LoadMoreProps {
-  fetchData: (page: number) => Promise<Movie[]>;
+  fetchData: (
+    page: number,
+    rating: string,
+    genre: string,
+    year: string,
+    duration: string
+  ) => Promise<Movie[]>;
+  filterValues: {
+    rating: string;
+    genre: string;
+    releasedYear: string;
+    duration: string;
+  };
 }
 
-function LoadMore({ fetchData }: LoadMoreProps) {
+function LoadMore({ fetchData, filterValues }: LoadMoreProps) {
   const { ref, inView } = useInView();
   const [data, setData] = useState<Movie[]>([]);
 
   const pathname = usePathname();
 
   useEffect(() => {
+    // Reset data to empty array when any filter value changes
+    setData([]);
+
+    // Fetch new data based on the updated filter values
+    fetchData(
+      page,
+      filterValues.rating,
+      filterValues.genre,
+      filterValues.releasedYear,
+      filterValues.duration
+    ).then((newData) => {
+      setData((prevData) => [...prevData, ...newData]);
+      page++;
+    });
+  }, [
+    filterValues.rating,
+    filterValues.genre,
+    filterValues.releasedYear,
+    filterValues.duration,
+    fetchData,
+  ]);
+
+  useEffect(() => {
+    // Reset page number when filter values change
+    page = 1;
+  }, [
+    filterValues.rating,
+    filterValues.genre,
+    filterValues.releasedYear,
+    filterValues.duration,
+  ]);
+
+  useEffect(() => {
     if (inView) {
-      fetchData(page).then((data) => {
-        setData((prevValue) => [...prevValue, ...data]);
+      // Fetch more data when user scrolls to the bottom
+      fetchData(
+        page,
+        filterValues.rating,
+        filterValues.genre,
+        filterValues.releasedYear,
+        filterValues.duration
+      ).then((newData) => {
+        setData((prevData) => [...prevData, ...newData]);
         page++;
       });
     }
-  }, [inView, data]);
+  }, [
+    inView,
+    data,
+    filterValues.rating,
+    filterValues.genre,
+    filterValues.releasedYear,
+    filterValues.duration,
+    fetchData,
+  ]);
 
   return (
     <>
