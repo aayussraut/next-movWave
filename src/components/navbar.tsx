@@ -2,6 +2,7 @@ import { IoNotificationsOutline } from "react-icons/io5";
 
 import Image from "next/image";
 import Link from "next/link";
+import SearchBar from "./search-bar";
 
 const Navbar = () => {
   return (
@@ -27,6 +28,7 @@ const Navbar = () => {
         </ul>
 
         <div className="flex items-center gap-4">
+          <SearchBar />
           <IoNotificationsOutline size={24} />
           <div>
             <Image
@@ -35,8 +37,7 @@ const Navbar = () => {
               className="w-8 h-8 rounded-full object-cover me-2 border-2 border-white"
               height={32}
               width={32}
-            priority={true}
-
+              priority={true}
             />
           </div>
         </div>
