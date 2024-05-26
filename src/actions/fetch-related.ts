@@ -12,8 +12,6 @@ export const fetchRelated = async (mediaId: string, mediaType: string) => {
       }
     );
 
-    // console.log("Response", response.data.results.results);
-
     return response.data.results;
   } catch (error) {
     console.error("Error fetching now showing movies:", error);
