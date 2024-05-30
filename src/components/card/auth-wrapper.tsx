@@ -16,9 +16,9 @@ export const AuthWrapper = ({
 }: AuthWrapperProps) => {
   return (
     <div className="flex justify-center items-center  bg-[url('/login-bg.jpg')] bg-cover bg-center h-screen ">
-      <Card className="bg-[#131720] border-none text-white text-center">
+      <Card className="bg-[#131720] border-none text-white">
         <CardHeader>
-          <div className="text-3xl ">
+          <div className="text-3xl text-center">
             <span className="text-white font-bold">mov</span>
             <span className="text-[#2f80ed] italic font-extrabold">Wave</span>
           </div>
