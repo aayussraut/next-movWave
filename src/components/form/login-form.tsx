@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { LoginSchema } from "../../../schema";
+import { LoginSchema } from "../../schema";
 import { useTransition } from "react";
 import { login } from "@/actions/login";
 

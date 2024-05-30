@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
-import { RegisterSchema } from "../../../schema";
+import { RegisterSchema } from "../../schema";
 import { Button } from "../ui/button";
 import { register } from "@/actions/register";
 
