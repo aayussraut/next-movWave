@@ -1,15 +1,21 @@
+import { auth } from "@/auth";
 import Navbar from "@/components/navbar";
+import { Session } from "inspector";
+import { SessionProvider } from "next-auth/react";
 
 interface ProtectedLayoutProps {
   children: React.ReactNode;
 }
 
-const ProtectedLayout = ({ children }: ProtectedLayoutProps) => {
+const ProtectedLayout = async ({ children }: ProtectedLayoutProps) => {
+  const session = await auth();
   return (
-    <div>
-      <Navbar />
-      {children}
-    </div>
+    <SessionProvider session={session}>
+      <div>
+        <Navbar />
+        {children}
+      </div>
+    </SessionProvider>
   );
 };
 
