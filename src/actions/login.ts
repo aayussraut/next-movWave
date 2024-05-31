@@ -1,7 +1,11 @@
 "use server";
 import * as z from "zod";
+import { AuthError } from "next-auth";
+import bcrypt from "bcryptjs";
+
 import { LoginSchema } from "../schema";
 import { getUserByEmail } from "../data/user";
+import { signIn } from "@/auth";
 
 export const login = async (values: z.infer<typeof LoginSchema>) => {
   const validatedFields = LoginSchema.safeParse(values);
@@ -18,10 +22,28 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     return { error: "Invalid Credentials!" };
   }
 
-  if (existingUser.password !== password) {
+  const comparePassword = await bcrypt.compare(password, existingUser.password);
+
+  if (!comparePassword) {
     return { error: "Invalid Credentials!" };
   }
 
-  console.log("User logged in!");
-  return { success: "User logged in!" };
+  try {
+    await signIn("credentials", {
+      email,
+      password,
+      redirectTo: "/",
+    });
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return { error: "Invalid Credentials!" };
+        default:
+          return { error: "Something went wrong!" };
+      }
+    }
+
+    throw error;
+  }
 };
