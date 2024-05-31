@@ -1,4 +1,5 @@
 import type { NextAuthConfig } from "next-auth";
+import bcrypt from "bcryptjs";
 
 import Credentials from "next-auth/providers/credentials";
 
@@ -20,9 +21,9 @@ export default {
             return null;
           }
 
-          const passwordMatch = user.password === password;
+          const comparePassword = await bcrypt.compare(password, user.password);
 
-          if (passwordMatch) {
+          if (comparePassword) {
             return user;
           }
         }
