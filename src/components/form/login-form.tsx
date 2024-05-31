@@ -39,8 +39,10 @@ export default function LoginForm() {
 
     startTransition(() => {
       login(data).then((res) => {
-        setError(res.error);
-        setSuccess(res.success);
+        if (res?.error) {
+          form.reset();
+          setError(res.error);
+        }
       });
     });
   };
