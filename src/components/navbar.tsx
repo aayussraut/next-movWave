@@ -1,12 +1,13 @@
-import { IoNotificationsOutline } from "react-icons/io5";
+import { IoNotificationsOutline, IoLogInOutline } from "react-icons/io5";
 
 import Image from "next/image";
 import Link from "next/link";
 import SearchBar from "./search-bar";
+import AuthStatus from "./auth-status";
 
 const Navbar = () => {
   return (
-    <nav className=" hover:bg-white/15 hover:shadow-sm text-white  flex justify-center w-full fixed top-0 z-50">
+    <nav className=" hover:bg-white/15 hover:shadow-sm text-white  flex justify-center w-full fixed top-0 z-50 text-shadow">
       <div className="flex justify-between text-white text-xs w-full px-10 py-2">
         <Link href="/">
           <div className="text-3xl">
@@ -16,7 +17,7 @@ const Navbar = () => {
         </Link>
 
         <ul className="flex gap-5 items-center ">
-          <li className="text-sm font-bold hover:text-[#2f80ed] hover:cursor-pointer">
+          <li className="text-sm font-bold hover:text-[#2f80ed] hover:cursor-pointer text-shadow">
             <Link href="/"> Home</Link>
           </li>
           <li className="text-sm font-bold hover:text-[#2f80ed] hover:cursor-pointer">
@@ -27,19 +28,10 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 cursor-pointer">
           <SearchBar />
           <IoNotificationsOutline size={24} />
-          <div>
-            <Image
-              src="/aayush.jpeg"
-              alt="profile"
-              className="w-8 h-8 rounded-full object-cover me-2 border-2 border-white"
-              height={32}
-              width={32}
-              priority={true}
-            />
-          </div>
+          <AuthStatus />
         </div>
       </div>
     </nav>
