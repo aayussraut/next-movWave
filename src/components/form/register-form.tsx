@@ -2,22 +2,26 @@
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
+
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
 import { RegisterSchema } from "../../schema";
 import { Button } from "../ui/button";
 import { register } from "@/actions/register";
+import { FormError } from "../form-error";
+import { FormSuccess } from "../form-success";
 
 export default function RegisterForm() {
   const [isPending, startTransition] = useTransition();
+  const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
 
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
@@ -29,9 +33,14 @@ export default function RegisterForm() {
   });
 
   const onSubmit = (data: z.infer<typeof RegisterSchema>) => {
-    console.log(data);
+    setError("");
+    setSuccess("");
+
     startTransition(() => {
-      register(data);
+      register(data).then((res) => {
+        setError(res.error);
+        setSuccess(res.success);
+      });
     });
   };
 
@@ -93,6 +102,8 @@ export default function RegisterForm() {
             />
           </>
         </div>
+        <FormError message={error} />
+        <FormSuccess message={success} />
         <Button type="submit" disabled={isPending} className="mt-5 w-full">
           Register
         </Button>
