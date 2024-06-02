@@ -7,7 +7,7 @@ interface FormSuccessProps {
 export const FormSuccess = ({ message }: FormSuccessProps) => {
   if (!message) return null;
   return (
-    <div className="flex items-center gap-x-2 text-emerald-500 text-sm bg-emerald-500/15 p-3 rounded-md">
+    <div className="flex items-center gap-x-2 text-emerald-500 text-sm bg-emerald-500/15 p-3 rounded-md mt-5">
       <IoCheckmarkCircleOutline className="w-4 h-4" />
       <span>{message}</span>
     </div>
