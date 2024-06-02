@@ -17,3 +17,7 @@ export const LoginSchema = z.object({
   }),
   code: z.string().optional(),
 });
+
+export const ResetPasswordSchema = z.object({
+  email: z.string().email(),
+});
