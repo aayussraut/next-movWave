@@ -9,6 +9,7 @@ export default function RegisterPage() {
       backButtonHref="/auth/login"
       backButtonLabel="Already have an account?"
       backButtonLinkLabel="Sign in!"
+      showSocial={true}
     >
       <RegisterForm />
     </AuthWrapper>
