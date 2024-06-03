@@ -21,3 +21,9 @@ export const LoginSchema = z.object({
 export const ResetPasswordSchema = z.object({
   email: z.string().email(),
 });
+
+export const NewPasswordSchema = z.object({
+  password: z.string().min(1, {
+    message: "Password is required",
+  }),
+});
