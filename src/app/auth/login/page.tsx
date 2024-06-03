@@ -9,6 +9,7 @@ export default function LoginPage() {
       backButtonHref="/auth/register"
       backButtonLabel="Don't have an account?"
       backButtonLinkLabel="Sign up!"
+      showSocial={true}
     >
       <LoginForm />
     </AuthWrapper>
