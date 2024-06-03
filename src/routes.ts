@@ -6,6 +6,11 @@ export const publicRoutes = [
   //   /^\/movies\/[^/]+$/, // for dynamic routes
 ];
 
-export const authRoutes = ["/auth/login", "/auth/register"];
+export const authRoutes = [
+  "/auth/login",
+  "/auth/register",
+  "/auth/reset-password",
+  "/auth/new-password",
+];
 
 export const apiAuthPrefix = "/api/auth";
