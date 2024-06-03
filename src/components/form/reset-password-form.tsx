@@ -53,7 +53,7 @@ export default function ResetPasswordForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="space-y-4">
+        <div className="space-y-4 w-80">
           <>
             <FormField
               control={form.control}
