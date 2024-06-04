@@ -31,7 +31,7 @@ export default function SearchBar() {
   return (
     <Form {...form}>
       <form onSubmit={handleSubmit}>
-        <div className="flex  w-fit border border-white rounded-xl items-center">
+        <div className="flex  w-fit border border-white rounded-xl items-center shadow-md">
           <FormField
             control={form.control}
             name="Media Type"
@@ -43,10 +43,10 @@ export default function SearchBar() {
                     onValueChange={field.onChange}
                     defaultValue={field.value ? field.value : "movie"}
                   >
-                    <SelectTrigger className="  flex w-32 gap-2 h-8 outline-none  focus:border-transparent bg-transparent appearance-none">
+                    <SelectTrigger className="  flex w-32 gap-2 h-8 outline-none  focus:border-transparent bg-transparent appearance-none text-shadow">
                       <SelectValue placeholder="Movie/Tv" />
                     </SelectTrigger>
-                    <SelectContent className="border border-white bg-[#0E1428]">
+                    <SelectContent className="border border-white bg-[#0E1428] text-white ">
                       <SelectItem value={"tv"}>TV Shows</SelectItem>
                       <SelectItem value="movie">Movies</SelectItem>
                     </SelectContent>
@@ -67,7 +67,7 @@ export default function SearchBar() {
                     placeholder="I'm looking for..."
                     value={field.value}
                     onChange={field.onChange}
-                    className="w-[180px] h-8 bg-transparent "
+                    className="w-[180px] h-8 bg-transparent text-shadow"
                   />
                 </FormControl>
               </FormItem>
