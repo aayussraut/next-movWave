@@ -43,6 +43,10 @@ export default function LoginForm() {
           form.reset();
           setError(res.error);
         }
+        if (res?.success) {
+          form.reset();
+          setSuccess(res.success);
+        }
       });
     });
   };
