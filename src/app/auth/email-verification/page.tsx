@@ -2,9 +2,9 @@ import { Suspense } from "react";
 import Image from "next/image";
 
 import { AuthWrapper } from "@/components/card/auth-wrapper";
-import NewPasswordForm from "@/components/form/new-password-form";
+import EmailVerificationForm from "@/components/form/email-verification-form";
 
-export default function NewPassword() {
+export default function EmailVerification() {
   return (
     <AuthWrapper
       backButtonLabel="Back to"
@@ -25,7 +25,7 @@ export default function NewPassword() {
           </div>
         }
       >
-        <NewPasswordForm />
+        <EmailVerificationForm />
       </Suspense>
     </AuthWrapper>
   );
