@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -43,6 +43,15 @@ model Account{
 }
 
 model PasswordResetToken {
+  id String @id @default(cuid())
+  email String @unique
+  token String @unique
+  expires DateTime
+
+  @@unique([email,token])
+}
+
+model EmailVerificationToken{
   id String @id @default(cuid())
   email String @unique
   token String @unique
