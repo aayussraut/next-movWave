@@ -6,6 +6,8 @@ import bcrypt from "bcryptjs";
 import { LoginSchema } from "../schema";
 import { getUserByEmail } from "../data/user";
 import { signIn } from "@/auth";
+import { generateEmailVerificationToken } from "@/lib/token";
+import { sendMail } from "@/lib/mail";
 
 export const login = async (values: z.infer<typeof LoginSchema>) => {
   const validatedFields = LoginSchema.safeParse(values);
@@ -18,7 +20,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
 
   const existingUser = await getUserByEmail(email);
 
-  if (!existingUser) {
+  if (!existingUser || !existingUser.password) {
     return { error: "Invalid Credentials!" };
   }
 
@@ -26,6 +28,17 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
 
   if (!comparePassword) {
     return { error: "Invalid Credentials!" };
+  }
+
+  if (!existingUser.emailVerified) {
+    const token = await generateEmailVerificationToken(email);
+    await sendMail(
+      email,
+      "Email Verification",
+      `Click here to verify your email: ${process.env.NEXT_PUBLIC_URL}/auth/email-verification?token=${token.token}`
+    );
+
+    return { success: "Confirmation Email Sent!" };
   }
 
   try {
