@@ -22,7 +22,7 @@ export default {
 
           const user = await getUserByEmail(email);
 
-          if (!user) {
+          if (!user || !user.password) {
             return null;
           }
 
