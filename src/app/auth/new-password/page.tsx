@@ -15,7 +15,7 @@ export default function NewPassword() {
         fallback={
           <div className="flex justify-center items-center w-full">
             <Image
-              src="./spinner.svg"
+              src="../spinner.svg"
               alt="spinner"
               width={56}
               height={56}
