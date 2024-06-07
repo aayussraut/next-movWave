@@ -3,6 +3,7 @@ import { signIn } from "next-auth/react";
 import { Button } from "../ui/button";
 
 export const SocialButton = () => {
+
   const onClick = (provider: "google" | "facebook" | "github") => {
     signIn(provider, {
       callbackUrl: "/",
