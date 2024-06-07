@@ -8,8 +8,9 @@ import {
   IoLogOutOutline,
   IoPersonOutline,
 } from "react-icons/io5";
-import Image from "next/image";
+import { FaUser } from "react-icons/fa";
 
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { logout } from "@/actions/logout";
 
@@ -29,14 +30,12 @@ const AuthStatus = () => {
     <div>
       {user && user.id ? (
         <div className="relative" onClick={toggleModal}>
-          <Image
-            src="/aayush.jpeg"
-            alt="profile"
-            className="w-8 h-8 rounded-full object-cover me-2 border-2 border-white"
-            height={32}
-            width={32}
-            priority={true}
-          />
+          <Avatar className="h-8 w-8">
+            <AvatarImage src={user?.image || ""} />
+            <AvatarFallback className="bg-sky-500">
+              <FaUser className="text-white" />
+            </AvatarFallback>
+          </Avatar>
           {isModalOpen && (
             <div className="absolute right-0 mt-2 w-48 border border-white bg-[#0E1428] rounded-md shadow-lg py-2 text-white cursor-pointer">
               <a
