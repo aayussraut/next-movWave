@@ -6,6 +6,7 @@ import { PrismaClient } from "@prisma/client";
 
 import authConfig from "./auth.config";
 import { db } from "./lib/db";
+import { getUserById } from "./data/user";
 
 export const {
   handlers: { GET, POST },
@@ -18,21 +19,25 @@ export const {
     error: "/auth/error",
   },
   callbacks: {
-    async signIn({ user }) {
-      if (user) {
+    async signIn({ user, account }) {
+      if (account?.provider !== "credentials") {
         return true;
       }
+
+      const existingUser = await getUserById(user.id as string);
+      if (!existingUser || !existingUser.emailVerified) {
+        return false;
+      }
+
       return false;
     },
     async jwt({ token, user, account, profile }) {
-      console.log("jwt", { token, user, account, profile });
       return token;
     },
     async session({ session, token, user }) {
       if (token.sub && session.user) {
         session.user.id = token.sub;
       }
-      console.log("session", { session, token, user });
       return session;
     },
   },
