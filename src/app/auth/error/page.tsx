@@ -5,11 +5,10 @@ export default function ErrorPage() {
   return (
     <AuthWrapper
       backButtonHref="/auth/login"
-      backButtonLabel="Already have an account?"
+      backButtonLabel="Back to"
       backButtonLinkLabel="Sign in!"
-      showSocial={true}
     >
-      <div className="w-full flex justify-center items-center">
+      <div className="w-full flex justify-center items-center -mt-5">
         <FormError message="Oops! Something went wrong!" />
       </div>
     </AuthWrapper>
