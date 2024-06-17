@@ -37,10 +37,55 @@ const TopRatedAndUpcomingMovieSlider = ({
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 7,
+    slidesToShow: 6,
     slidesToScroll: 6,
     centerPadding: "60px",
     arrows: false,
+
+    responsive: [
+      {
+        breakpoint: 1536,
+        settings: {
+          slidesToShow: 7,
+          slidesToScroll: 4,
+        },
+      },
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 4,
+        },
+      },
+      {
+        breakpoint: 1060,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 4,
+        },
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 5,
+        },
+      },
+      {
+        breakpoint: 750,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 7,
+        },
+      },
+      {
+        breakpoint: 570,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 10,
+        },
+      },
+    ],
   };
 
   return (
