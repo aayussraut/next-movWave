@@ -119,7 +119,7 @@ export default function DetailInfo({
               </Button>
             </div>
           </div>
-          <div className="flex flex-col text-white gap-5">
+          <div className="flex text-white gap-5 w-full">
             <div className="flex flex-col gap-2 w-3/5">
               <h2 className="text-white text-xl 2xl:text-3xl font-semibold">
                 Summary
@@ -127,28 +127,25 @@ export default function DetailInfo({
               <p className="text-white text-md 2xl:text-xl text-justify">
                 {movie?.overview || tv?.overview}
               </p>
+              <h2 className="text-white text-xl 2xl:text-3xl font-semibold">
+                Reviews
+              </h2>
+              {reviews.slice(0, 2).map((review) => (
+                <ReviewCard key={review.id} review={review} />
+              ))}
             </div>
-            <div className="flex gap-10 ">
-              <div className="flex flex-2 flex-col gap-2 w-3/5">
-                <h2 className="text-white text-xl 2xl:text-3xl font-semibold">
-                  Reviews
-                </h2>
-                {reviews.slice(0, 2).map((review) => (
-                  <ReviewCard key={review.id} review={review} />
-                ))}
-              </div>
-              <div className="flex-1">
-                <h2 className="text-white text-xl 2xl:text-3xl font-semibold mb-2">
-                  Related
-                </h2>
-                <div className="flex flex-wrap gap-8 2xl:gap-x-24">
-                  {similarMovies.length > 0 &&
-                    similarMovies
-                      .slice(0, 4)
-                      .map((movie) => (
-                        <MovieCard key={movie.id} url={url} movie={movie} />
-                      ))}
-                </div>
+
+            <div className="flex flex-col w-2/5">
+              <h2 className="text-white text-xl 2xl:text-3xl font-semibold mb-2">
+                Related
+              </h2>
+              <div className="flex flex-wrap gap-8 2xl:gap-x-24">
+                {similarMovies.length > 0 &&
+                  similarMovies
+                    .slice(0, 4)
+                    .map((movie) => (
+                      <MovieCard key={movie.id} url={url} movie={movie} />
+                    ))}
               </div>
             </div>
           </div>
