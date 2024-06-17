@@ -47,7 +47,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
 
         <div className="mt-5 border-t-2  border-[#2F80ED]/10 pt-5">
           <p
-            className="text-white text-base 2xl:text-md text-justify"
+            className="text-white text-base 2xl:text-md text-justify line-clamp-4"
             dangerouslySetInnerHTML={{ __html: review.content }}
           ></p>
         </div>
